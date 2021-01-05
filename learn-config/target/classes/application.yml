@@ -1,0 +1,21 @@
+server:
+  port: 7501
+spring:
+  application:
+    name: learn-config
+  zipkin:
+    base-url: http://localhost:7800
+  sleuth:
+      sampler:
+        probability: 1.0
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/winerte/learn-online.git
+          search-paths: learn-online
+          default-label: main
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka

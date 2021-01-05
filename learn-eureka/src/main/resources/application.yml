@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: learn-eureka
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+  server:
+    enable-self-preservation: false
