@@ -2,7 +2,7 @@ package com.qf.utils;
 
 import com.google.gson.Gson;
 
-import com.qf.resp.BaseResp;
+import com.qf.pojo.resp.BaseResp;
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
 import com.qiniu.storage.Configuration;

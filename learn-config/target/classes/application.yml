@@ -14,7 +14,7 @@ spring:
         git:
           uri: https://github.com/winerte/learn-online.git
           search-paths: learn-online
-          default-label: main
+          default-label: master
 eureka:
   client:
     service-url:

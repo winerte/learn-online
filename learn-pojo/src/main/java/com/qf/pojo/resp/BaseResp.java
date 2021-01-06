@@ -1,4 +1,4 @@
-package com.qf.resp;
+package com.qf.pojo.resp;
 
 import lombok.Data;
 
