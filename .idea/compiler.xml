@@ -12,10 +12,10 @@
         <module name="learn-admin" />
         <module name="learn-serach" />
         <module name="learn-pojo" />
-        <module name="learn-course" />
+        <module name="learn-utils" />
         <module name="learn-zipkin" />
         <module name="learn-eureka" />
-        <module name="learn-utils" />
+        <module name="learn-course" />
       </profile>
     </annotationProcessing>
   </component>

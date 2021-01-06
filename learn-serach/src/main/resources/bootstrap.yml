@@ -11,6 +11,7 @@ spring:
         enabled: true
       name: learn-config
       profile: dev
+      label: master
 server:
   port: 8010
 eureka:
