@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.CourseMapper">
+    <resultMap id="BaseMap" type="com.qf.pojo.vo.Course">
+        <id column="id" property="id"></id>
+        <result column="teacher_id" property="teacherId"></result>
+        <result column="subject_id" property="subjectId"></result>
+        <result column="title" property="title"></result>
+        <result column="price" property="price"></result>
+        <result column="lesson_num" property="lessonNum"></result>
+        <result column="cover" property="cover"></result>
+        <result column="buy_count" property="buyCount"></result>
+        <result column="view_count" property="viewCount"></result>
+        <result column="version" property="version"></result>
+        <result column="status" property="status"></result>
+        <result column="is_deleted" property="isDeleted"></result>
+        <result column="gmt_create" property="gmtCreate"></result>
+        <result column="gmt_modified" property="gmtModified"></result>
+        <result column="subject_parent_id" property="subjectParentId"></result>
+    </resultMap>
+
+    <select id="findCourseAll" resultMap="BaseMap">
+        select *  from  course
+    </select>
+</mapper>

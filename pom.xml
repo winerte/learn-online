@@ -17,6 +17,7 @@
         <module>learn-zipkin</module>
         <module>learn-zuul</module>
         <module>learn-serach</module>
+        <module>learn-course</module>
     </modules>
 
     <parent>

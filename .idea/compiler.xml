@@ -13,9 +13,10 @@
         <module name="learn-admin" />
         <module name="learn-serach" />
         <module name="learn-pojo" />
+        <module name="learn-utils" />
         <module name="learn-zipkin" />
         <module name="learn-eureka" />
-        <module name="learn-utils" />
+        <module name="learn-course" />
       </profile>
     </annotationProcessing>
   </component>
@@ -24,6 +25,7 @@
       <module name="learn-admin" options="-parameters" />
       <module name="learn-comment" options="-parameters" />
       <module name="learn-config" options="-parameters" />
+      <module name="learn-course" options="-parameters" />
       <module name="learn-eureka" options="-parameters" />
       <module name="learn-pojo" options="-parameters" />
       <module name="learn-serach" options="-parameters" />
