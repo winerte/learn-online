@@ -5,7 +5,7 @@
 
 package com.qf.controller;
 
-import com.qf.resp.BaseResp;
+import com.qf.pojo.resp.BaseResp;
 import com.qf.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

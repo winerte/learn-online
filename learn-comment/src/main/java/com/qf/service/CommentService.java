@@ -5,7 +5,8 @@
 
 package com.qf.service;
 
-import com.qf.resp.BaseResp;
+
+import com.qf.pojo.resp.BaseResp;
 
 public interface CommentService {
     BaseResp findByCid(Integer cid, Integer page, Integer size);
