@@ -1,17 +1,17 @@
 package com.qf.service.impl;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.qf.dao.CourseMapper;
 import com.qf.pojo.resp.BaseResp;
 import com.qf.pojo.vo.Course;
+import com.qf.pojo.vo.Menu;
 import com.qf.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: yanjia
@@ -27,17 +27,114 @@ public class CourseServiceImpl implements CourseService {
     public BaseResp findCourseAll(Integer page, Integer size) {
         BaseResp baseResp = new BaseResp();
         PageHelper.startPage(page, size);
-        List<Course>  list  =  courseMapper.findCourseAll();
+        List<Course> list = courseMapper.findCourseAll();
         PageInfo<Course> coursePageInfo = new PageInfo<>(list);
-        if(coursePageInfo != null){
+        if (coursePageInfo != null) {
             baseResp.setData(coursePageInfo.getList());
             baseResp.setCode(200);
             baseResp.setMessage("查询课程所有成功");
             baseResp.setTotal(coursePageInfo.getTotal());
-        }else{
+        } else {
             baseResp.setCode(2001);
             baseResp.setMessage("查询课程所有成功");
         }
         return baseResp;
     }
+
+    @Override
+    public BaseResp findCourseMenuAll(Map map) {
+        Integer level = (Integer) map.get("level");
+        BaseResp baseResp = new BaseResp();
+        List<Menu> list = courseMapper.findCourseMenuAll(level);
+        if (list != null) {
+            baseResp.setData(list);
+            baseResp.setCode(200);
+            baseResp.setMessage("查询一级菜单成功");
+        } else {
+            baseResp.setCode(2002);
+            baseResp.setMessage("查询一级菜单失败");
+        }
+        return baseResp;
+    }
+
+    @Override
+    public BaseResp findYiJiMenuMing(Map map) {
+        BaseResp baseResp = new BaseResp();
+        Integer id = (Integer) map.get("id");
+        Menu menu = courseMapper.findYiJiMenuMing(id);
+        if (menu != null) {
+            baseResp.setCode(200);
+            baseResp.setMessage("一级菜单查找成功");
+            baseResp.setData(menu);
+        } else {
+            baseResp.setCode(2002);
+            baseResp.setMessage("一级菜单查找失败");
+        }
+        return baseResp;
+    }
+
+    @Override
+    public BaseResp findErJiMenuMing(Map map) {
+        BaseResp baseResp = new BaseResp();
+        Integer parent = (Integer) map.get("parent");
+        List<Menu> list = courseMapper.findErJiMenuMing(parent);
+        if (list != null) {
+            baseResp.setData(list);
+            baseResp.setCode(200);
+            baseResp.setMessage("查询二级菜单成功");
+        } else {
+            baseResp.setCode(2002);
+            baseResp.setMessage("查询二级菜单失败");
+        }
+        return baseResp;
+    }
+
+
+    @Override
+    public BaseResp findCourseByYiJiMenu(Map map) {
+        Integer subjectParentId = (Integer) map.get("subjectParentId");
+        Integer page = (Integer) map.get("page");
+        Integer size = (Integer) map.get("size");
+        PageHelper.startPage(page,size);
+        List<Course> list = courseMapper.findCourseByYiJiMenu(subjectParentId);
+        PageInfo<Course> coursePageInfo = new PageInfo<>(list);
+        BaseResp baseResp = new BaseResp();
+        if(list != null){
+            baseResp.setMessage("根据一级菜单查询课程成功");
+            baseResp.setTotal(coursePageInfo.getTotal());
+            baseResp.setData(list);
+            baseResp.setCode(200);
+        }else{
+            baseResp.setMessage("根据一级菜单查询课程失败");
+            baseResp.setCode(2005);
+        }
+        return baseResp;
+    }
+
+    @Override
+    public BaseResp findCourseByErjIMenu(Map map) {
+        Integer subjectId = null;
+        if( map.get("subjectId").toString()!=""){
+            subjectId = Integer.valueOf(map.get("subjectId").toString()) ;
+        }
+
+        Integer page = (Integer) map.get("page");
+        Integer size = (Integer) map.get("size");
+        PageHelper.startPage(page,size);
+        List<Course> list = courseMapper.findCourseByErjIMenu(subjectId);
+        PageInfo<Course> coursePageInfo = new PageInfo<>(list);
+        BaseResp baseResp = new BaseResp();
+        if(list != null){
+            baseResp.setMessage("根据二级菜单查询课程成功");
+            baseResp.setTotal(coursePageInfo.getTotal());
+            baseResp.setData(list);
+            baseResp.setCode(200);
+        }else{
+            baseResp.setMessage("根据二级菜单查询课程失败");
+            baseResp.setCode(2006);
+        }
+        return baseResp;
+    }
+
+
 }

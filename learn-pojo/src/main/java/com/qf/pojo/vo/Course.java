@@ -1,6 +1,8 @@
 package com.qf.pojo.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -35,9 +37,16 @@ public class Course {
 
     private Integer isDeleted;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date gmtCreate;
 
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date gmtModified;
+
+    private String pic;
 
     private Integer subjectParentId;
 
