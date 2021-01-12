@@ -7,13 +7,13 @@ spring:
       #uri: http://localhost:7500
       discovery:
       #我们配置再eureka上 得唯一标识
-        service-id: qfshop-config
+        service-id: learn-config
         enabled: true
-      name: qf-shop
+      name: learn-config
       profile: dev
 server:
   port: 8010
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8000/eureka
+      defaultZone: http://localhost:8080/eureka
