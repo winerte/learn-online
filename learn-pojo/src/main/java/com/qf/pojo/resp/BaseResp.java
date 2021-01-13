@@ -1,7 +1,12 @@
 package com.qf.pojo.resp;
 
-import lombok.Data;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class BaseResp {
 
@@ -12,6 +17,8 @@ public class BaseResp {
     private String message;
 
     private Long total;
+
+    private String name;
 
 
 }
