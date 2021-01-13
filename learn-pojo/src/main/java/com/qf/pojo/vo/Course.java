@@ -21,6 +21,8 @@ public class Course {
 
     private Double price;
 
+    private String pic;
+
     private Integer lessonNum;
 
     private String cover;

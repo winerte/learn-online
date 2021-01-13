@@ -55,7 +55,7 @@ public class QfSearchServiceImpl implements QfSearchService {
         int from=(page-1)*size;
         searchSourceBuilder.from(from);
         searchSourceBuilder.size(size);
-        searchRequest.source(searchSourceBuilder);
+
 
 //        高亮字段
         HighlightBuilder highlightBuilder = new HighlightBuilder();
@@ -65,6 +65,7 @@ public class QfSearchServiceImpl implements QfSearchService {
         highlightBuilder.preTags("<font style='color:red'>");
         highlightBuilder.postTags("</font>");
         searchSourceBuilder.highlighter(highlightBuilder);
+        searchRequest.source(searchSourceBuilder);
 //       执行请求
         try {
             SearchResponse search = restHighLevelClient.search(searchRequest);
