@@ -20,6 +20,6 @@
         select * from orders where transferId = #{transferId}
     </select>
     <update id="updateById" parameterType="com.qf.pojo.vo.Orders">
-        update orders set transferId = #{transferId}
+        update orders set status = #{status}
     </update>
 </mapper>

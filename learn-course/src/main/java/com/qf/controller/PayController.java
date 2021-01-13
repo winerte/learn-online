@@ -27,7 +27,7 @@ public class PayController {
         Map<String, String> stringStringMap = convertRequestParamsToMap(request);
 //        System.out.println(stringStringMap);
         //支付宝公钥
-            boolean signVerified = AlipaySignature.rsaCheckV1(stringStringMap, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvMG4xb1cXHXKdbZrh14/kO6xwbP34Wu9SRrLk+aAaquRmMg/8koNu29AKyyA+SdPxL1Onp5343vb87HkUXfuMJ5ao56pds7W4xeB/39qnR2OlFDhzIDBdNn+Ejy9BC8L0dqFbmUrHv8Z2vt2mUFJCfXZkDvD6O1Oa2Jj2hMr0dPXERyDx0svNzK8Z21Z1yy9MLHQqoFqd+fhMnsrV+O3VUsCopGd5twYJzG+9uyJXvwKLnphqDUkTkqc/4Zwxu04FpOysHYoQq0nL1dFAZTRCt9OBCVECGLlG+m9L3fWjDfxOPU9JX2hMwrRayplZZ/fqVK2+Q0KSVTcqDotZ8OwQQIDAQAB", "utf-8", "RSA2");
+            boolean signVerified = AlipaySignature.rsaCheckV1(stringStringMap, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp8XVSXDG0GuJ+QahGTfCuam/BRnGbM1sycrYmJeW02YujGWc74bhFDRf70l4zcOpPBwT6mMHZPs/ka/lX/Zhjd4Un0Mp3cgFHOePtaOiab/4Ubs1RqVMjzxABGthkDQmN/oj3683T7LgKwn5h1miwx+eba2f8J6EGYfgzqFt+dv/+C99F3bZpI7ZOEHE+Yh7g9RJMcr4+8i3SvxUPlkI5baGYWvvBRZf1FjDQXyIX2kpIbDGoBcq1W8UveIWxNr/oJniCbpph93dJfFjlfR2fgVyXw3IvUmN2+SuPGRmzy3nMt71i3wInjJAWxjKRV4/m8a0r78aIUfbhdSHTZyAKwIDAQAB", "utf-8", "RSA2");
         if(signVerified){
             // TODO 验签成功后，按照支付结果异步通知中的描述，对支付结果中的业务内容进行二次校验，校验成功后在response中返回success并继续商户自身业务处理，校验失败返回failure
 //            System.out.println(stringStringMap);

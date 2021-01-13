@@ -213,6 +213,7 @@ public class CourseServiceImpl implements CourseService {
         String tradno = string.replace("-", "");
         Orders orders = new Orders();
         Integer cid = (Integer) map.get("cid");
+
         Cookie[] cookies = request.getCookies();
         CookieUtils cookieUtils = new CookieUtils();
         String token = cookieUtils.getToken(cookies);
