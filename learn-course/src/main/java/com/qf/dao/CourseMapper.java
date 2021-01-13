@@ -27,4 +27,10 @@ public interface CourseMapper {
     List<Course> findCourseByYiJiMenu(@Param("subjectParentId") Integer subjectParentId);
 
     List<Course> findCourseByErjIMenu(@Param("subjectId") Integer subjectId);
+
+    List<Course> findFreeCourseAll();
+
+    List<Course> findFeeCourseAll();
+
+    Course findCourseById(@Param("id") Integer id);
 }

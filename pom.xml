@@ -18,6 +18,7 @@
         <module>learn-zuul</module>
         <module>learn-serach</module>
         <module>learn-course</module>
+        <module>learn-alipay</module>
     </modules>
 
     <parent>

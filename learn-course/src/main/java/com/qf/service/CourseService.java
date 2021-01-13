@@ -2,6 +2,8 @@ package com.qf.service;
 
 import com.qf.pojo.resp.BaseResp;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
@@ -22,4 +24,11 @@ public interface CourseService {
 
     BaseResp findCourseByErjIMenu(Map map);
 
+    BaseResp findFreeCourseAll(Integer page, Integer size);
+
+    BaseResp findFeeCourseAll(Integer page, Integer size);
+
+    BaseResp findCourseById(Integer id);
+
+    BaseResp toPay(Map map, HttpServletRequest request, HttpServletResponse response);
 }

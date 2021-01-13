@@ -26,6 +26,15 @@
         select *  from  course
     </select>
 
+    <select id="findFreeCourseAll" resultMap="BaseMap">
+        select * from course where status = 0
+    </select>
+
+
+    <select id="findFeeCourseAll" resultMap="BaseMap">
+        select * from course where status = 1
+    </select>
+
     <select id="findCourseMenuAll" resultType="com.qf.pojo.vo.Menu">
         select * from menu where level = #{level}
     </select>
@@ -42,6 +51,10 @@
         select * from course where subject_parent_id = #{subjectParentId}
     </select>
 
+
+    <select id="findCourseById" resultMap="BaseMap">
+        select  * from course where id = #{id}
+    </select>
 
     <select id="findCourseByErjIMenu" resultMap="BaseMap">
         select  * from course where subject_id = #{subjectId}
