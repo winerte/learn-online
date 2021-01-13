@@ -8,7 +8,7 @@ import com.qf.pojo.vo.User;
 import com.qf.service.UserService;
 import com.qf.utils.CookieUtils;
 import com.qf.utils.JWTUtils;
-import com.qf.utils.RedisUitls;
+import com.qf.utils.RedisUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     JavaMailSender javaMailSender;
     @Autowired
-    RedisUitls redisUitls;
+    RedisUtils redisUitls;
     @Value("${spring.mail.username}")
     private String from;
 
