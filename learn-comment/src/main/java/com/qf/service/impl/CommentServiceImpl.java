@@ -9,17 +9,23 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.qf.dao.CommentMapper;
 import com.qf.pojo.resp.BaseResp;
+import com.qf.utils.CookieUtils;
+import com.qf.utils.JWTUtils;
 import com.qf.vo.Comment;
 import com.qf.service.CommentService;
 import com.qf.utils.RedisUtils;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -133,12 +139,17 @@ public class CommentServiceImpl implements CommentService {
     Comment comment = new Comment();
     public Integer cid;
     @Override
-    public BaseResp AddComment(Integer cid, String des, Double score)
-    {
+    public BaseResp AddComment(Integer cid, String des, Double score, HttpServletRequest request) {
+        CookieUtils cookieUtils = new CookieUtils();
+        Cookie[] cookies = request.getCookies();
+        String token = cookieUtils.getToken(cookies);
+        JWTUtils jwtUtils = new JWTUtils();
+        Map verify = jwtUtils.Verify(token);
+        Integer uid = (Integer) verify.get("id");
         comment.setCid(cid);
         comment.setDes(des);
         comment.setScore(score);
-        comment.setUid(Integer.valueOf(7));
+        comment.setUid(uid);
         this.cid = cid;
         redisUtils.hset((new StringBuilder()).append("comm_").append(comment.getUid()).toString(), cid.toString(), comment);
         baseResp.setCode(Integer.valueOf(200));
@@ -146,7 +157,6 @@ public class CommentServiceImpl implements CommentService {
         return baseResp;
     }
 
-    //0/10 * * * * ?
 
     @Scheduled(cron = "0/10 * * * * ?")
     public void SaveComment()

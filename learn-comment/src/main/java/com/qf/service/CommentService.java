@@ -8,10 +8,12 @@ package com.qf.service;
 
 import com.qf.pojo.resp.BaseResp;
 
+import javax.servlet.http.HttpServletRequest;
+
 public interface CommentService {
     BaseResp findByCid(Integer cid, Integer page, Integer size);
 
     BaseResp findByScoreAndCid(Integer cid, Double valueOf, Integer page, Integer size);
 
-    BaseResp AddComment(Integer cid, String des, Double score);
+    BaseResp AddComment(Integer cid, String des, Double score, HttpServletRequest request);
 }

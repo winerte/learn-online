@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @RestController
@@ -42,12 +43,12 @@ public class CommentController {
     }
 
     @RequestMapping("/AddComment")
-    public BaseResp AddComment(@RequestBody Map map)
+    public BaseResp AddComment(@RequestBody Map map, HttpServletRequest request)
     {
         Integer cid = (Integer)map.get("cid");
         String des = (String)map.get("des");
         Double score = Double.valueOf(map.get("score").toString());
-        return commentService.AddComment(cid, des, score);
+        return commentService.AddComment(cid, des, score,request);
     }
 
     @RequestMapping("/findByScore")
