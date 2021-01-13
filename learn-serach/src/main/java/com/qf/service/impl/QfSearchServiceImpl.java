@@ -2,7 +2,8 @@ package com.qf.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.qf.controller.SerachController;
-import com.qf.resp.BaseResp;
+import com.qf.pojo.resp.BaseResp;
+import com.qf.pojo.vo.Course;
 import com.qf.service.QfSearchService;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchRequestBuilder;
@@ -48,7 +49,7 @@ public class QfSearchServiceImpl implements QfSearchService {
         searchRequest.types("doc");
 
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-        searchSourceBuilder.query(QueryBuilders.multiMatchQuery(key,"name"));
+        searchSourceBuilder.query(QueryBuilders.multiMatchQuery(key,"title"));//title
 
 //        分页
         int from=(page-1)*size;
@@ -59,7 +60,7 @@ public class QfSearchServiceImpl implements QfSearchService {
 //        高亮字段
         HighlightBuilder highlightBuilder = new HighlightBuilder();
 //        要高亮的字段
-        highlightBuilder.field("name");
+        highlightBuilder.field("title");//title
 //        前缀后缀
         highlightBuilder.preTags("<font style='color:red'>");
         highlightBuilder.postTags("</font>");
@@ -76,32 +77,38 @@ public class QfSearchServiceImpl implements QfSearchService {
             List list = new ArrayList<>();
             for (SearchHit hi:hits1){
                 Map<String, HighlightField> highlightFields = hi.getHighlightFields();
-                String name=null;
+                String title=null;
                 if (highlightFields!=null){
-                    HighlightField Name = highlightFields.get("name");
+                    HighlightField Name = highlightFields.get("title");
                     if(Name!=null){
                         Text[] fragments = Name.getFragments();
                         StringBuffer stringBuffer = new StringBuffer();
                         if (fragments!=null){
                             for (Text te:fragments){
-                                name = stringBuffer.append(te).toString();
+                                title = stringBuffer.append(te).toString();
                             }
                         }
                     }
                 }
 //                处理其他数据
                 Map<String, Object> sourceAsMap = hi.getSourceAsMap();
-                sourceAsMap.put("Name",name);
+                if (title!=null){
+                    sourceAsMap.put("Name",title);
+                }
                 Object o = JSONObject.toJSON(sourceAsMap);
-
-
+                Course course = JSONObject.parseObject(o.toString(), Course.class);
+//                course.setId(Integer.valueOf(hi.getId()));
+                list.add(course);
             }
+            baseResp.setCode(200);
+            baseResp.setMessage("查询成功");
+            baseResp.setData(list);
+            return baseResp;
         } catch (IOException e) {
             e.printStackTrace();
             baseResp.setCode(3001);
             baseResp.setMessage("查询失败");
             return baseResp;
         }
-        return null;
     }
 }

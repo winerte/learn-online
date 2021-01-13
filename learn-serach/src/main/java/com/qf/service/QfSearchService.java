@@ -1,6 +1,6 @@
 package com.qf.service;
 
-import com.qf.resp.BaseResp;
+import com.qf.pojo.resp.BaseResp;
 
 /**
  * Created by Wang on 2021/1/6 15:33
