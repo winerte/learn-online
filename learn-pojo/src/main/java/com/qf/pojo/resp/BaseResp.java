@@ -1,5 +1,6 @@
 package com.qf.pojo.resp;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,11 +18,7 @@ public class BaseResp {
 
     private Long total;
 
-    private Long totall;
+    private String name;
 
-    private Long totalll;
 
-    private Long totallll;
-
-    private String hapinglv;
 }

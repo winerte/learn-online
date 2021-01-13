@@ -1,0 +1,5 @@
+com\qf\controller\CourseController.class
+com\qf\service\CourseService.class
+com\qf\dao\CourseMapper.class
+com\qf\LearnCourseApplication.class
+com\qf\service\impl\CourseServiceImpl.class

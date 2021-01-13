@@ -1,2 +1,5 @@
-com\qf\config\ElasticsearchConfig.class
 com\qf\LearnSearchApplication.class
+com\qf\service\QfSearchService.class
+com\qf\controller\SerachController.class
+com\qf\config\ElasticsearchConfig.class
+com\qf\service\impl\QfSearchServiceImpl.class

@@ -1,2 +1,4 @@
-com\qf\resp\BaseResp.class
-com\qf\vo\Comment.class
+com\qf\pojo\resp\BaseResp.class
+com\qf\pojo\req\UserReq.class
+com\qf\pojo\vo\User.class
+com\qf\pojo\vo\Course.class

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.UserMapper">
+
+    <insert id="registry" >
+        INSERT INTO user (id,username,password,email) VALUES (null,#{username},#{password},#{email})
+    </insert>
+
+
+    <select id="findByEmail" resultType="com.qf.pojo.vo.User">
+        SELECT email from user where email = #{email}
+    </select>
+
+    <select id="findUserName" resultType="com.qf.pojo.vo.User">
+        SELECT
+        username
+        from user where  username = #{username}
+    </select>
+
+</mapper>

@@ -8,7 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="learn-config" />
-        <module name="learn-comment" />
+        <module name="learn-user" />
         <module name="learn-zuul" />
         <module name="learn-admin" />
         <module name="learn-serach" />
@@ -23,12 +23,12 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="learn-admin" options="-parameters" />
-      <module name="learn-comment" options="-parameters" />
       <module name="learn-config" options="-parameters" />
       <module name="learn-course" options="-parameters" />
       <module name="learn-eureka" options="-parameters" />
       <module name="learn-pojo" options="-parameters" />
       <module name="learn-serach" options="-parameters" />
+      <module name="learn-user" options="-parameters" />
       <module name="learn-utils" options="-parameters" />
       <module name="learn-zipkin" options="-parameters" />
       <module name="learn-zuul" options="-parameters" />
