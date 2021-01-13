@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: learn-comment
+  cloud:
+    config:
+    #http://localhost:7500/qf-shop/dev
+#      uri: http://localhost:7501hj
+      discovery:
+      #我们配置再eureka上 得唯一标识
+        service-id: learn-config
+        enabled: true
+      name: learn-config
+      profile: dev
+server:
+  port: 8041
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka

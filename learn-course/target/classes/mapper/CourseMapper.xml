@@ -19,9 +19,45 @@
         <result column="gmt_create" property="gmtCreate"></result>
         <result column="gmt_modified" property="gmtModified"></result>
         <result column="subject_parent_id" property="subjectParentId"></result>
+        <result column="pic" property="pic"></result>
     </resultMap>
 
     <select id="findCourseAll" resultMap="BaseMap">
         select *  from  course
     </select>
+
+    <select id="findFreeCourseAll" resultMap="BaseMap">
+        select * from course where status = 0
+    </select>
+
+
+    <select id="findFeeCourseAll" resultMap="BaseMap">
+        select * from course where status = 1
+    </select>
+
+    <select id="findCourseMenuAll" resultType="com.qf.pojo.vo.Menu">
+        select * from menu where level = #{level}
+    </select>
+
+    <select id="findYiJiMenuMing" resultType="com.qf.pojo.vo.Menu">
+        select * from menu where id = #{id}
+    </select>
+
+    <select id="findErJiMenuMing" resultType="com.qf.pojo.vo.Menu">
+        select * from menu where parent = #{parent}
+    </select>
+
+    <select id="findCourseByYiJiMenu" resultMap="BaseMap">
+        select * from course where subject_parent_id = #{subjectParentId}
+    </select>
+
+
+    <select id="findCourseById" resultMap="BaseMap">
+        select  * from course where id = #{id}
+    </select>
+
+    <select id="findCourseByErjIMenu" resultMap="BaseMap">
+        select  * from course where subject_id = #{subjectId}
+    </select>
+
 </mapper>

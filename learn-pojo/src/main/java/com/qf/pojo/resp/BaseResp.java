@@ -19,6 +19,10 @@ public class BaseResp {
     private Long total;
 
     private String name;
+    private String hapinglv;
+    private Long totall;
+    private Long totalll;
+    private Long totallll;
 
 
 }
